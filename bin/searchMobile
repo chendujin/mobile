@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+use Chendujin\Mobile\Mobile;
+
+require __DIR__ . '/../src/Mobile.php';
+
+$mobile = $argv[1];
+$memStart = memory_get_usage();
+$timeStart = microtime(true);
+$result = (new Mobile)->search($mobile);
+$timeEnd = microtime(true);
+$memEnd = memory_get_usage();
+print_r($result);
+echo 'time: ' . number_format(($timeEnd - $timeStart), 10, '.', '')." s";
+echo PHP_EOL;
+echo 'memory:' . memory_usage($memEnd - $memStart);
+echo PHP_EOL;
+
+function memory_usage($bytes): string
+{
+    $i = floor(log($bytes) / log(1024));
+    $sizes = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+    return sprintf('%.02F', $bytes / pow(1024, $i)) * 1 . ' ' . $sizes[$i];
+}
