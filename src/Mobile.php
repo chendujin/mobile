@@ -180,7 +180,7 @@ class Mobile
      */
     public static function isMobilePhone(string $mobilePhone): bool
     {
-        return preg_match('/^13[\d]{9}$|14^[0-9]\d{8}|^15[0-9]\d{8}$|^18[0-9]\d{8}$/', $mobilePhone) ? true : false;
+        return (bool)preg_match('/^1[3456789]{1}[0-9]{9}$/', $mobilePhone);
     }
 
     /**
@@ -190,7 +190,7 @@ class Mobile
      */
     public static function isTelPhone(string $telPhone): bool
     {
-        return preg_match('/^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/', $telPhone) ? true : false;
+        return (bool)preg_match('/^(0[0-9]{2,3}(\-)?)?\d{7,8}$/', $telPhone);
     }
 
     public function __destruct()

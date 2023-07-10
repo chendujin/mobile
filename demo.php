@@ -28,5 +28,5 @@ print_r($infos);
 //     [operator_type] => 广电
 // )
 
-var_dump($mobile->isTelPhone('5957126')); // true
+var_dump($mobile->isTelPhone('0755-9876543')); // true
 var_dump($mobile->isMobilePhone('13299257009')); // true
